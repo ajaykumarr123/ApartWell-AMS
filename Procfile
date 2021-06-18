@@ -1,1 +1,1 @@
-web: gunicorn shop_management.wsgi --log-file -
+web: gunicorn Apartment_Management.wsgi --log-file -
