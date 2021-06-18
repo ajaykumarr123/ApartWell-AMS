@@ -1,0 +1,15 @@
+th{
+   text-transform: uppercase;
+}
+
+tr{
+    color : #000000;
+    background-color: #FFFFFF;
+}
+
+#lodge_complaint_button {
+	position: relative;
+  	left: 960px;
+  	padding-bottom: 10px;
+}
+

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="{% static 'table.css' %}">	
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div  id = "lodge_complaint_button">
+       <button class="btn btn-outline-success my-2 my-sm-0"><a href="/view/">View Main</a>
+       </button>
+    </div>
+
+    <legend class = "border-bottom mb-4"><h1 class="text-center"> <strong>Building Details</strong></h1></legend>
+        {% for complaint in flat_model %}
+        <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <medium class="text-primary"><b>Building Name</b> : {{ complaint.building_name }}</br></medium>
+            <medium class="text-muted"><b>Total No. of Floors</b> : {{ complaint.n_floors }}</br></medium>
+            <medium class="text-muted"><b>Total No. of Flats</b> : {{ complaint.n_flats }}</br></medium>
+          </div>
+        </div>
+        </article>
+      {% endfor %}
+  </body>
+</html>
+{% endblock %}

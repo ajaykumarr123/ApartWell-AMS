@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="{% static 'table.css' %}">	
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <legend class = "border-bottom mb-4"><h2 class="text-center"><img  src="/static/complaint.png" width = "45" height = "45" alt="home" /> <strong>Registered Complaints</strong></h2></legend>
+    <div  id = "lodge_complaint_button">
+       <button class="btn btn-outline-success my-2 my-sm-0"><a href="{% url 'complaints:lodge_complaint' %}">Lodge Complaint</a>
+       </button>
+    </div>
+        {% for complaint in complaints_list %}
+        <article class="media content-section">
+        <img class = "rounded-circle article-img"src = "{{ image_url }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <medium class="text-muted"><b>Complaint-ID</b> : {{ complaint.complaint_id }}</br></medium>
+            <medium class="text-muted"><b>Status</b> : {{ complaint.get_status_display }}</br></medium>
+            <medium class="text-muted"><b>Date & Time</b> : {{ complaint.date }}</br></medium>
+            <medium class="text-muted"><b>Content</b> : {{ complaint.content }}</br></medium>
+            <medium class="text-muted"><b>Comments</b> : {{ complaint.comments }}</br></medium>
+          </div>
+        </div>
+        </article>
+      {% endfor %}
+  </body>
+</html>
+{% endblock %}

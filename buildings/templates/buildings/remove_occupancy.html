@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="{% static 'table.css' %}">	
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <legend class = "border-bottom mb-4"><h1 class="text-center"> <strong>Remove Occupancy</strong></h1></legend>
+    <div  id = "lodge_complaint_button">
+       <button class="btn btn-outline-success my-2 my-sm-0"><a href="/view/">View Main</a>
+       </button>
+    </div>
+<form method="POST"  >
+  {% csrf_token %}
+        {% for complaint in occupies %}
+        <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <input type="radio" id="o" name="o" value='{{ complaint.pk }}' checked>
+              <label for="o">Flat: {{ complaint.flat_id }}</label><br>
+              <label for="o">User: {{ complaint.user_id }}</label><br>
+              <label for="o">Ownership: {{ complaint.ownership }}</label><br>
+
+          </div>
+        </div>
+        </article>
+      {% endfor %}
+
+      {% if user.is_authenticated and user.is_superuser %}
+        <input type="submit" class="btn btn-outline-success" value="Enter"/>
+      {% endif %}
+  </form>
+
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="{% static 'table.css' %}">	
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <legend class = "border-bottom mb-4"><h1 class="text-center"> <strong>Apartment Details</strong></h1></legend>
+      
+
+      {% if user.is_authenticated and user.is_superuser %}
+       <button class="btn btn-outline-success "><a href="/view/view_occupancy/">View Occupancies</a></button>
+       <button class="btn btn-outline-success my-2 my-sm-0"><a href="/view/building/">View Buildings</a></button>
+       {% endif %}
+       <button class="btn btn-outline-success my-2 my-sm-0"><a href="/view/flat/">View Flats</a></button>
+       <button class="btn btn-outline-success my-2 my-sm-0"><a href="/view/service_directory/">View Service Directory</a></button>      
+    </div>
+  </body>
+</html>
+{% endblock %}
